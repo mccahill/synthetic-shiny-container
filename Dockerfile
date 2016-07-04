@@ -148,6 +148,10 @@ RUN rm \
    downloader_0.4.tar.gz
 
 
+# install rmarkdown
+ADD ./conf /r-studio
+RUN R CMD BATCH /r-studio/install-rmarkdown.R
+RUN rm /install-rmarkdown.Rout 
 
 
 # Supervisord
@@ -157,6 +161,10 @@ CMD ["/usr/bin/supervisord", "-n"]
 
 ADD ./conf /additional-configs
 RUN cp /additional-configs/supervisord-shiny.conf /etc/supervisor/conf.d/supervisord-shiny.conf
+
+RUN wget https://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.4.2.786-amd64.deb
+RUN DEBIAN_FRONTEND=noninteractive gdebi -n shiny-server-1.4.2.786-amd64.deb
+RUN rm shiny-server-1.4.2.786-amd64.deb
 
 # Shiny
 RUN R CMD BATCH /additional-configs/install-Shiny.R
@@ -190,6 +198,7 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
 #########
 
 EXPOSE 8787 
+EXPOSE 3838
 
 CMD ["/usr/bin/supervisord"]
 

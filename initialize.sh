@@ -8,6 +8,8 @@
 # make sure they own their home directory
 #
 chown -R guest ~guest ; chgrp -R users ~guest
+chown -R shiny.shiny /srv/shiny-server
+sudo chown -R shiny.shiny /var/log/shiny-server
 
 #
 # set the passwords for the user 'guest' based on environment variable. 
