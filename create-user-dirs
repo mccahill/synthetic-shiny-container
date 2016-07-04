@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# 
+# need a couple directories that are mapped as volumes into
+# the Shiny container:
+#      homedirs   -- user home directories
+#      shinylogs  -- shiny server logs
+#
+# the naming covention is that inside the directories we have
+# user-specific subdirectories: "user000", "user001", "user002"
+# and an external app maps users to the approriate container
+# which mounts the user-specific directories. 
+#
+# So, the minial set of directories for one use is:
+ 
+ mkdir -p homedirs/user000
+ mkdir -p shinylogs/user000
+ 
