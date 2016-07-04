@@ -1,8 +1,8 @@
 sudo docker run -d -e USERPASS=badpassword  \
-        -v /home/rapiduser/dibbs-shiny-container/synthetic-data:/synthetic-data \
         -v /home/rapiduser/dibbs-shiny-container/homedirs/user000:/home/guest \
-        -v /home/rapiduser/dibbs-shiny-container/shinyapps/user000:/srv/shiny-server \
-        -v /home/rapiduser/dibbs-shiny-container/shinylogs/user000:/var/log/shiny-server \
+		-v /home/rapiduser/dibbs-shiny-container/shinylogs/user000:/var/log/shiny-server \
+        -v /home/rapiduser/dibbs-shiny-container/synthetic-data:/synthetic-data:ro \
+        -v /home/rapiduser/dibbs-shiny-container/shinyapps:/srv/shiny-server:ro \
         -p 0.0.0.0:8787:8787 \
         -p 0.0.0.0:3838:3838 -i -t shiny
 
