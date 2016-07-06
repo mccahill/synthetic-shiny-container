@@ -197,7 +197,12 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
 #
 #########
 
-EXPOSE 8787 
+# only expose one port so docker-gen does not screw up the config it generates for
+# the nginx container = port 8787 is here mainly for debugging via RStudio
+# so turn it off for production
+# EXPOSE 8787 
+
+# expose the port for the shiny server
 EXPOSE 3838
 
 CMD ["/usr/bin/supervisord"]
