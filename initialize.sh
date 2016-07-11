@@ -21,5 +21,16 @@ then
   unset USERPASS
 fi
 
+
+#
+# set the MAGIC_TOKEN environment variable where it will be easy for R to get it
+#
+
+if [ ! -z $MAGIC_TOKEN ]
+then
+/bin/echo "# set the MAGIC_TOKEN environment variable for R" >> /etc/R/Renviron.site
+/bin/echo "MAGIC_TOKEN=$MAGIC_TOKEN"  >> /etc/R/Renviron.site
+fi
+
 exit 0
 
