@@ -6,6 +6,12 @@ data setsd to limit data 'leakage'.
 
 This is a component of the application found here: https://github.com/mccahill/synthetic-data
 
+To run the R code in this project you will need this library
+```
+     https://github.com/mccahill/synthetic-verification-measures
+```
+
+
 You will almost certainly want to run this Docker container behind an 
 Nginx proxy to provide https support. 
 
